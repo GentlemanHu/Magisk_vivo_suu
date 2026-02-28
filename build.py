@@ -315,7 +315,7 @@ def build_binary(args):
 
     # Basic flags
     global base_flags
-    base_flags = f'MAGISK_VERSION=23.0 for Z1 MAGISK_VER_CODE={config["versionCode"]}'
+    base_flags = f'MAGISK_VERSION="23.0 for Z1" MAGISK_VER_CODE={config["versionCode"]}'
     if not args.release:
         base_flags += ' MAGISK_DEBUG=1'
 
