@@ -205,7 +205,7 @@ def clean_elf():
     else:
         elf_cleaner = op.join('native', 'out', 'elf-cleaner')
         if not op.exists(elf_cleaner):
-            execv(['g++', '-std=c++11', 'tools/termux-elf-cleaner/termux-elf-cleaner.cpp',
+            execv(['g++', '-std=c++11', 'tools/termux-elf-cleaner/elf-cleaner.cpp',
                    '-o', elf_cleaner])
     args = [elf_cleaner]
     args.extend(op.join('native', 'out', arch, 'magisk')

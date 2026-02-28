@@ -45,8 +45,23 @@ jobs:
         run: |
           ndk_ver=$(sed -n 's/^magisk.fullNdkVersion=//p' gradle.properties)
           echo ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT >> $GITHUB_ENV
-          export APP_ALLOW_MISSING_DEPS=true
+          echo APP_ALLOW_MISSING_DEPS=true >> $GITHUB_ENV
           echo MAGISK_NDK_VERSION=$ndk_ver >> $GITHUB_ENV
+        shell: bash
+
+      - name: Initialize missing submodules
+        run: |
+          set -e
+          git clone --depth=1 https://github.com/nanopb/nanopb.git native/jni/external/nanopb
+          git clone --depth=1 https://github.com/topjohnwu/selinux.git native/jni/external/selinux
+          git clone --depth=1 https://github.com/topjohnwu/mincrypt.git native/jni/external/mincrypt
+          git clone --depth=1 https://github.com/lz4/lz4.git native/jni/external/lz4
+          git clone --depth=1 https://github.com/nemequ/bzip2.git native/jni/external/bzip2
+          git clone --depth=1 https://github.com/xz-mirror/xz.git native/jni/external/xz
+          git clone --depth=1 https://github.com/dgibson/dtc.git native/jni/external/dtc
+          git clone --depth=1 https://android.googlesource.com/platform/external/zlib native/jni/external/zlib
+          git clone --depth=1 https://github.com/topjohnwu/ndk-busybox.git native/jni/external/busybox
+          git clone --depth=1 https://github.com/termux/termux-elf-cleaner.git tools/termux-elf-cleaner
         shell: bash
 
       - name: Cache Gradle
