@@ -212,7 +212,7 @@ LOCAL_SRC_FILES := \
     selinux/libsepol/src/policydb_public.c \
     selinux/libsepol/src/port_record.c \
     selinux/libsepol/src/ports.c \
-    selinux/libsepol/src/roles.c \
+    selinux/libsepol/src/policydb_validate.c \
     selinux/libsepol/src/services.c \
     selinux/libsepol/src/sidtab.c \
     selinux/libsepol/src/symtab.c \
@@ -221,9 +221,11 @@ LOCAL_SRC_FILES := \
     selinux/libsepol/src/util.c \
     selinux/libsepol/src/write.c \
     selinux/libsepol/cil/src/cil.c \
+    selinux/libsepol/cil/src/android.c \
     selinux/libsepol/cil/src/cil_binary.c \
     selinux/libsepol/cil/src/cil_build_ast.c \
     selinux/libsepol/cil/src/cil_copy_ast.c \
+    selinux/libsepol/cil/src/cil_deny.c \
     selinux/libsepol/cil/src/cil_find.c \
     selinux/libsepol/cil/src/cil_fqn.c \
     selinux/libsepol/cil/src/cil_lexer.c \
@@ -239,7 +241,8 @@ LOCAL_SRC_FILES := \
     selinux/libsepol/cil/src/cil_strpool.c \
     selinux/libsepol/cil/src/cil_symtab.c \
     selinux/libsepol/cil/src/cil_tree.c \
-    selinux/libsepol/cil/src/cil_verify.c
+    selinux/libsepol/cil/src/cil_verify.c \
+    selinux/libsepol/cil/src/cil_write_ast.c
 LOCAL_CFLAGS := -Dgetline=__getline -Wno-implicit-function-declaration
 include $(BUILD_STATIC_LIBRARY)
 
@@ -258,6 +261,7 @@ LOCAL_CFLAGS := \
     -Dfgets_unlocked=fgets -D'__fsetlocking(...)='
 LOCAL_SRC_FILES := \
     selinux/libselinux/src/avc.c \
+    selinux/libselinux/src/audit2why.c \
     selinux/libselinux/src/avc_internal.c \
     selinux/libselinux/src/avc_sidtab.c \
     selinux/libselinux/src/booleans.c \
@@ -285,11 +289,16 @@ LOCAL_SRC_FILES := \
     selinux/libselinux/src/getenforce.c \
     selinux/libselinux/src/getfilecon.c \
     selinux/libselinux/src/getpeercon.c \
+    selinux/libselinux/src/hashtab.c \
     selinux/libselinux/src/init.c \
     selinux/libselinux/src/is_customizable_type.c \
     selinux/libselinux/src/label.c \
+    selinux/libselinux/src/label_backends_android.c \
+    selinux/libselinux/src/label_db.c \
     selinux/libselinux/src/label_file.c \
+    selinux/libselinux/src/label_media.c \
     selinux/libselinux/src/label_support.c \
+    selinux/libselinux/src/label_x.c \
     selinux/libselinux/src/lgetfilecon.c \
     selinux/libselinux/src/load_policy.c \
     selinux/libselinux/src/lsetfilecon.c \
@@ -303,6 +312,7 @@ LOCAL_SRC_FILES := \
     selinux/libselinux/src/reject_unknown.c \
     selinux/libselinux/src/selinux_check_securetty_context.c \
     selinux/libselinux/src/selinux_config.c \
+    selinux/libselinux/src/selinux_internal.c \
     selinux/libselinux/src/selinux_restorecon.c \
     selinux/libselinux/src/sestatus.c \
     selinux/libselinux/src/setenforce.c \
