@@ -12,7 +12,20 @@ import subprocess
 import sys
 import urllib.request
 import zipfile
-from distutils.dir_util import copy_tree
+
+
+def copy_tree(src, dst):
+    os.makedirs(dst, exist_ok=True)
+    copied = []
+    for item in os.listdir(src):
+        src_path = op.join(src, item)
+        dst_path = op.join(dst, item)
+        if op.isdir(src_path):
+            copied.extend(copy_tree(src_path, dst_path))
+        else:
+            shutil.copy2(src_path, dst_path)
+            copied.append(dst_path)
+    return copied
 
 
 def error(str):
