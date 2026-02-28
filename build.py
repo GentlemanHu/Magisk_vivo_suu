@@ -267,7 +267,12 @@ def binary_dump(src, out, var_name):
 
 def run_ndk_build(flags):
     os.chdir('native')
-    proc = system(f'{ndk_build} {base_flags} {flags} -j{cpu_count}')
+    cmd = ndk_build
+    # NDK r21 ndk-build only recognises x86_64/amd64 as host arch.
+    # On Apple Silicon use 'arch -x86_64' (Rosetta 2) to satisfy the check.
+    if platform.system() == 'Darwin' and platform.machine() == 'arm64':
+        cmd = f'arch -x86_64 {cmd}'
+    proc = system(f'{cmd} {base_flags} {flags} -j{cpu_count}')
     if proc.returncode != 0:
         error('Build binary failed!')
     os.chdir('..')
@@ -315,7 +320,7 @@ def build_binary(args):
 
     # Basic flags
     global base_flags
-    base_flags = f'MAGISK_VERSION="23.0 for Z1" MAGISK_VER_CODE={config["versionCode"]}'
+    base_flags = f'MAGISK_VERSION=23.0_for_Z1 MAGISK_VER_CODE={config["versionCode"]}'
     if not args.release:
         base_flags += ' MAGISK_DEBUG=1'
 

@@ -185,7 +185,6 @@ LOCAL_SRC_FILES := \
     selinux/libsepol/src/context.c \
     selinux/libsepol/src/context_record.c \
     selinux/libsepol/src/debug.c \
-    selinux/libsepol/src/deprecated_funcs.c \
     selinux/libsepol/src/ebitmap.c \
     selinux/libsepol/src/expand.c \
     selinux/libsepol/src/handle.c \
