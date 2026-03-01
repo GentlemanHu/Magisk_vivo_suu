@@ -62,6 +62,11 @@ jobs:
           git clone --depth=1 https://android.googlesource.com/platform/external/zlib native/jni/external/zlib
           git clone --depth=1 https://github.com/topjohnwu/ndk-busybox.git native/jni/external/busybox
           git clone --depth=1 https://github.com/termux/termux-elf-cleaner.git tools/termux-elf-cleaner
+          # Clone AOSP external/pcre at the exact commit used by Magisk v23.0 (has dist2/src/ structure)
+          git init native/jni/external/pcre
+          git -C native/jni/external/pcre remote add origin https://android.googlesource.com/platform/external/pcre
+          git -C native/jni/external/pcre fetch --depth=1 origin 986dc24ace8aea66189a95510813747155fa3800
+          git -C native/jni/external/pcre checkout FETCH_HEAD
         shell: bash
 
       - name: Cache Gradle
