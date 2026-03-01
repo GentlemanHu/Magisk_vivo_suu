@@ -185,7 +185,6 @@ LOCAL_SRC_FILES := \
     selinux/libsepol/src/context.c \
     selinux/libsepol/src/context_record.c \
     selinux/libsepol/src/debug.c \
-    selinux/libsepol/src/deprecated_funcs.c \
     selinux/libsepol/src/ebitmap.c \
     selinux/libsepol/src/expand.c \
     selinux/libsepol/src/handle.c \
@@ -213,7 +212,7 @@ LOCAL_SRC_FILES := \
     selinux/libsepol/src/policydb_public.c \
     selinux/libsepol/src/port_record.c \
     selinux/libsepol/src/ports.c \
-    selinux/libsepol/src/roles.c \
+    selinux/libsepol/src/policydb_validate.c \
     selinux/libsepol/src/services.c \
     selinux/libsepol/src/sidtab.c \
     selinux/libsepol/src/symtab.c \
@@ -222,9 +221,11 @@ LOCAL_SRC_FILES := \
     selinux/libsepol/src/util.c \
     selinux/libsepol/src/write.c \
     selinux/libsepol/cil/src/cil.c \
+    selinux/libsepol/cil/src/android.c \
     selinux/libsepol/cil/src/cil_binary.c \
     selinux/libsepol/cil/src/cil_build_ast.c \
     selinux/libsepol/cil/src/cil_copy_ast.c \
+    selinux/libsepol/cil/src/cil_deny.c \
     selinux/libsepol/cil/src/cil_find.c \
     selinux/libsepol/cil/src/cil_fqn.c \
     selinux/libsepol/cil/src/cil_lexer.c \
@@ -240,7 +241,8 @@ LOCAL_SRC_FILES := \
     selinux/libsepol/cil/src/cil_strpool.c \
     selinux/libsepol/cil/src/cil_symtab.c \
     selinux/libsepol/cil/src/cil_tree.c \
-    selinux/libsepol/cil/src/cil_verify.c
+    selinux/libsepol/cil/src/cil_verify.c \
+    selinux/libsepol/cil/src/cil_write_ast.c
 LOCAL_CFLAGS := -Dgetline=__getline -Wno-implicit-function-declaration
 include $(BUILD_STATIC_LIBRARY)
 
@@ -286,6 +288,7 @@ LOCAL_SRC_FILES := \
     selinux/libselinux/src/getenforce.c \
     selinux/libselinux/src/getfilecon.c \
     selinux/libselinux/src/getpeercon.c \
+    selinux/libselinux/src/hashtab.c \
     selinux/libselinux/src/init.c \
     selinux/libselinux/src/is_customizable_type.c \
     selinux/libselinux/src/label.c \
@@ -399,4 +402,3 @@ include $(BUILD_STATIC_LIBRARY)
 CWD := $(LOCAL_PATH)
 include $(CWD)/systemproperties/Android.mk
 include $(CWD)/mincrypt/Android.mk
-include $(CWD)/libcxx/Android.mk
