@@ -292,12 +292,8 @@ LOCAL_SRC_FILES := \
     selinux/libselinux/src/init.c \
     selinux/libselinux/src/is_customizable_type.c \
     selinux/libselinux/src/label.c \
-    selinux/libselinux/src/label_backends_android.c \
-    selinux/libselinux/src/label_db.c \
     selinux/libselinux/src/label_file.c \
-    selinux/libselinux/src/label_media.c \
     selinux/libselinux/src/label_support.c \
-    selinux/libselinux/src/label_x.c \
     selinux/libselinux/src/lgetfilecon.c \
     selinux/libselinux/src/load_policy.c \
     selinux/libselinux/src/lsetfilecon.c \
