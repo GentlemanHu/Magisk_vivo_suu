@@ -261,7 +261,6 @@ LOCAL_CFLAGS := \
     -Dfgets_unlocked=fgets -D'__fsetlocking(...)='
 LOCAL_SRC_FILES := \
     selinux/libselinux/src/avc.c \
-    selinux/libselinux/src/audit2why.c \
     selinux/libselinux/src/avc_internal.c \
     selinux/libselinux/src/avc_sidtab.c \
     selinux/libselinux/src/booleans.c \
