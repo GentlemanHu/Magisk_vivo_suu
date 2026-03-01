@@ -307,7 +307,6 @@ LOCAL_SRC_FILES := \
     selinux/libselinux/src/reject_unknown.c \
     selinux/libselinux/src/selinux_check_securetty_context.c \
     selinux/libselinux/src/selinux_config.c \
-    selinux/libselinux/src/selinux_internal.c \
     selinux/libselinux/src/selinux_restorecon.c \
     selinux/libselinux/src/sestatus.c \
     selinux/libselinux/src/setenforce.c \
