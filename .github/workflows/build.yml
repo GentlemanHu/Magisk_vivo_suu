@@ -60,7 +60,12 @@ jobs:
           git clone --depth=1 https://github.com/xz-mirror/xz.git native/jni/external/xz
           git clone --depth=1 https://github.com/dgibson/dtc.git native/jni/external/dtc
           git clone --depth=1 https://android.googlesource.com/platform/external/zlib native/jni/external/zlib
-          git clone --depth=1 https://github.com/topjohnwu/ndk-busybox.git native/jni/external/busybox
+          # Pin ndk-busybox to Magisk v23.0 commit: latest HEAD dropped #include <sys/syslog.h>
+          # which provides CODE/prioritynames/facilitynames needed by NDK r21e syslog.h
+          git init native/jni/external/busybox
+          git -C native/jni/external/busybox remote add origin https://github.com/topjohnwu/ndk-busybox.git
+          git -C native/jni/external/busybox fetch --depth=1 origin 84ce191c8e3e69869617991c275f1b724422c604
+          git -C native/jni/external/busybox checkout FETCH_HEAD
           git clone --depth=1 https://github.com/termux/termux-elf-cleaner.git tools/termux-elf-cleaner
           # Clone AOSP external/pcre at the exact commit used by Magisk v23.0 (has dist2/src/ structure)
           git init native/jni/external/pcre
